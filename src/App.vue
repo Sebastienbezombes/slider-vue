@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Slides index="1"/>
+    <Slides/>
   </div>
 </template>
 

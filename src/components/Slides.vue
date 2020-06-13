@@ -5,7 +5,7 @@
     </div>
 
     <div class="container">
-        <img v-for="img in images" v-bind:key="img.map((el, i) => {return i})"/>
+        <img v-for="img in images" :key="img.id" :src="img.source"/>
     </div>
 
     <div class="arrowRight" @click="nextSlide()">
@@ -18,21 +18,15 @@
 
 export default {
     name:"Slides",
-    active: false,
-    props: {
-        index: Number
-    },
-    data() {
-        return {
-            images: [
-                '../assets/slide1.jpg',
-                '../assets/slide2.jpg',
-                '../assets/slide3.jpg',
-                '../assets/slide4.jpg',
-                '../assets/slide5.jpg',
-            ]
-        }
-    },
+    data: () => ({
+        images: [
+            {index: 1, source:require('../assets/slide1.jpg')},
+            {index: 2, source:require('../assets/slide2.jpg')},
+            {index: 3, source:require('../assets/slide3.jpg')},
+            {index: 4, source:require('../assets/slide4.jpg')},
+            {index: 5, source:require('../assets/slide5.jpg')},
+        ] 
+    }),
     methods: {
         precSlide() {
             console.log("back")
@@ -61,8 +55,8 @@ export default {
         border-radius: 6px;
     }
     img {
-        width: 100%;
-        object-fit: cover;
+        width: 1280px;
+        height: 720px;
     }
     .arrowLeft, .arrowRight {
         height: 720px;
