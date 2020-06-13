@@ -5,7 +5,7 @@
     </div>
 
     <div class="container">
-        <img v-for="img in images" :key="img.id" :src="img.source"/>
+        <img v-for="img in images" :key="img.index" :src="img.source" v-show="img.index === i"/>
     </div>
 
     <div class="arrowRight" @click="nextSlide()">
@@ -18,21 +18,29 @@
 
 export default {
     name:"Slides",
+    props: {
+        idx: Number
+    },
     data: () => ({
+        i: 1,
         images: [
             {index: 1, source:require('../assets/slide1.jpg')},
             {index: 2, source:require('../assets/slide2.jpg')},
             {index: 3, source:require('../assets/slide3.jpg')},
             {index: 4, source:require('../assets/slide4.jpg')},
             {index: 5, source:require('../assets/slide5.jpg')},
-        ] 
+        ],
     }),
     methods: {
         precSlide() {
-            console.log("back")
+            this.i--;
+            this.index = this.i;
+            this.index < 1 ? this.i = 5 : '';
         },
-        nextSlide() {
-            return this.index
+        nextSlide() {   
+            this.i++;
+            this.index = this.i;
+            this.index > 5 ? this.i = 1 : '';
         }
     }
 }
@@ -66,5 +74,6 @@ export default {
         font-weight: bold;
         font-size: 32px;
         cursor: pointer;
+        user-select: none;
     }
 </style>
