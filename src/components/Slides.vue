@@ -1,16 +1,12 @@
 <template>
 <div>
-    <div class="arrowLeft" @click="precSlide()">
-        ←
-    </div>
+    <div class="arrowLeft" @click="precSlide()">←</div>
 
     <div class="container">
         <img v-for="img in images" :key="img.index" :src="img.source" v-show="img.index === i"/>
     </div>
 
-    <div class="arrowRight" @click="nextSlide()">
-        →
-    </div>
+    <div class="arrowRight" @click="nextSlide()">→</div>
 </div>
 </template>
 
@@ -18,9 +14,6 @@
 
 export default {
     name:"Slides",
-    props: {
-        idx: Number
-    },
     data: () => ({
         i: 1,
         images: [
