@@ -28,12 +28,12 @@ export default {
         precSlide() {
             this.i--;
             this.index = this.i;
-            this.index < 1 ? this.i = 5 : '';
+            this.index < 1 ? this.i = this.images.length : '';
         },
         nextSlide() {   
             this.i++;
             this.index = this.i;
-            this.index > 5 ? this.i = 1 : '';
+            this.index > this.images.length ? this.i = 1 : '';
         }
     }
 }
