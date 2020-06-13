@@ -5,7 +5,7 @@
     </div>
 
     <div class="container">
-        <img src="../assets/slide{{ index }}.jpg" alt="landscape moutain"/>
+        <img v-for="img in images" v-bind:key="img.map((el, i) => {return i})"/>
     </div>
 
     <div class="arrowRight" @click="nextSlide()">
@@ -21,6 +21,17 @@ export default {
     active: false,
     props: {
         index: Number
+    },
+    data() {
+        return {
+            images: [
+                '../assets/slide1.jpg',
+                '../assets/slide2.jpg',
+                '../assets/slide3.jpg',
+                '../assets/slide4.jpg',
+                '../assets/slide5.jpg',
+            ]
+        }
     },
     methods: {
         precSlide() {
